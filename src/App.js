@@ -8,6 +8,3 @@ export default function App() {
     </div>
   );
 }
-
-
-git remote add origin https:<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>://@github.com/<lunev>/<english-dictionary>.git
