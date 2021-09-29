@@ -46,6 +46,7 @@ export const FormSearch = (event) => {
       </form>
 
       {isLoading && "Loading..."}
+      
       {res &&
         res.map((re) => {
           const { word, origin } = re;
