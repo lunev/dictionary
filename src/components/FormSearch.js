@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { showAlert, fetchDictionary, cleanDictionary } from "../redux/actions";
 import { Alert } from "./Alert";
 import { Loader } from "./Loader";
+import { Listing } from "./Listing";
 
-export default (event) => {
+export default () => {
   const input = useRef(null);
   const reset = useRef(null);
 
@@ -13,12 +14,10 @@ export default (event) => {
   const loading = useSelector((state) => state.app.loading);
   const dictionary = useSelector((state) => state.dictionary.fetchedDictionary);
 
-  console.log("dictionary: ", dictionary);
-
   const onSubmit = (event) => {
     event.preventDefault();
-    let query = input.current.value;
-    if (!query.trim()) {
+    let query = input.current.value.trim();
+    if (!query) {
       return dispatch(showAlert("The field is required"));
     }
     dispatch(fetchDictionary(query));
@@ -47,27 +46,9 @@ export default (event) => {
 
       {dictionary &&
         Array.isArray(dictionary) &&
-        dictionary.map((re) => {
-          const { word, origin } = re;
-          return (
-            <div className="res">
-              <h2>{word}</h2>
-              <p>{origin}</p>
-              {re.phonetics.length &&
-                re.phonetics.map((ph) => {
-                  return (
-                    <div>
-                      <p>{ph.text}</p>
-                      {ph.audio && (
-                        <audio controls>
-                          <source src={ph.audio} type="audio/mpeg" />
-                        </audio>
-                      )}
-                    </div>
-                  );
-                })}
-            </div>
-          );
+        dictionary.map((res, i) => {
+          // const { word, origin } = re;
+          return <Listing res={res} key={i} />;
         })}
     </div>
   );
