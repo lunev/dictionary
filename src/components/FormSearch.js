@@ -36,7 +36,6 @@ export const FormSearch = (event) => {
 
   return (
     <div>
-    
       <form onSubmit={onSubmit}>
         <input type="text" ref={input} />
         <button type="submit">Search</button>
@@ -46,7 +45,7 @@ export const FormSearch = (event) => {
       </form>
 
       {isLoading && "Loading..."}
-      
+
       {res &&
         res.map((re) => {
           const { word, origin } = re;
