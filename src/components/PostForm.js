@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { connect, useDispatch } from "react-redux";
 import { createPost } from "../redux/actions"
 
@@ -20,13 +20,13 @@ const PostForm = () => {
     }
 
     return (
-        <>  
+        <div>  
             <h2>Post Form</h2>
             <form onSubmit={submitHandler}>
                 <input type="text" ref={input} />
                 <button type="submit">Submit</button>
             </form>
-        </>
+        </div>
     )
 }
 

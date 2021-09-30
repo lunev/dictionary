@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 const fetchURL = (keyword) => {
   return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
@@ -35,7 +35,7 @@ export const FormSearch = (event) => {
   };
 
   return (
-    <>
+    <div>
     
       <form onSubmit={onSubmit}>
         <input type="text" ref={input} />
@@ -57,19 +57,19 @@ export const FormSearch = (event) => {
               {re.phonetics.length &&
                 re.phonetics.map((ph) => {
                   return (
-                    <>
+                    <div>
                       <p>{ph.text}</p>
                       {ph.audio && (
                         <audio controls>
                           <source src={ph.audio} type="audio/mpeg" />
                         </audio>
                       )}
-                    </>
+                    </div>
                   );
                 })}
             </div>
           );
         })}
-    </>
+    </div>
   );
 };

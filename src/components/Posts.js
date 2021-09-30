@@ -1,3 +1,4 @@
+import React from 'react';
 import Post from "./Post";
 import {connect} from 'react-redux';
 
@@ -6,10 +7,10 @@ const Posts = ({syncPosts}) => {
         return <p>There are no posts.</p>
     }
     return (
-        <>
+        <div>
             <h2>Posts</h2>
             {syncPosts.map(post => <Post post={post} key={post.id} />)}
-        </>
+        </div>
     );
 }
 

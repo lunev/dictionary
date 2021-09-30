@@ -1,3 +1,4 @@
+import React from 'react';
 import { FormSearch } from './components/FormSearch';
 import Posts from './components/Posts';
 import PostForm from './components/PostForm';
@@ -8,12 +9,12 @@ export default function App() {
     <div className="App">
       <h1>English Dictionary</h1>
       <FormSearch />
-      {/* <hr />
+      <hr />
       <Posts />
       <hr />
       <PostForm />
       <hr />
-      <FetchedPosts /> */}
+      <FetchedPosts />
     </div>
   );
 }
