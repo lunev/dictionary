@@ -1,37 +1,32 @@
 import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showAlert, fetchDictionary, cleanDictionary } from "../redux/actions";
+import { Alert } from "./Alert";
+import { Loader } from "./Loader";
 
-const fetchURL = (keyword) => {
-  return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
-
-export const FormSearch = (event) => {
-  const [res, setRes] = useState([]);
-  const [isLoading, SetIsLoading] = useState(false);
+export default (event) => {
   const input = useRef(null);
   const reset = useRef(null);
 
+  const dispatch = useDispatch();
+  const alert = useSelector((state) => state.app.alert);
+  const loading = useSelector((state) => state.app.loading);
+  const dictionary = useSelector((state) => state.dictionary.fetchedDictionary);
+
+  console.log("dictionary: ", dictionary);
+
   const onSubmit = (event) => {
     event.preventDefault();
-    SetIsLoading(true);
     let query = input.current.value;
-    query.length &&
-      fetchURL(query).then((result) => {
-        console.log(result);
-        setRes(result);
-        SetIsLoading(false);
-      });
+    if (!query.trim()) {
+      return dispatch(showAlert("The field is required"));
+    }
+    dispatch(fetchDictionary(query));
   };
 
   const onReset = (event) => {
     input.current.value = "";
-    console.log(res);
-    setRes([]);
+    dispatch(cleanDictionary());
   };
 
   return (
@@ -44,10 +39,15 @@ export const FormSearch = (event) => {
         </button>
       </form>
 
-      {isLoading && "Loading..."}
+      {loading && <Loader />}
 
-      {res &&
-        res.map((re) => {
+      {alert && <Alert text={alert} />}
+
+      {dictionary && dictionary.message}
+
+      {dictionary &&
+        Array.isArray(dictionary) &&
+        dictionary.map((re) => {
           const { word, origin } = re;
           return (
             <div className="res">

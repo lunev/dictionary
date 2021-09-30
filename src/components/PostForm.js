@@ -39,13 +39,13 @@ const PostForm = () => {
   );
 };
 
-const mapDispatchToProps = {
-  createPost,
-  showAlert,
-};
+// const mapDispatchToProps = {
+//   createPost,
+//   showAlert,
+// };
 
 // const mapStateToProps = state => ({
 //     alert: state.app.alert
 // });
 
-export default connect(null, mapDispatchToProps)(PostForm);
+export default connect(null, null)(PostForm);

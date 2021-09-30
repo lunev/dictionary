@@ -1,5 +1,5 @@
 import React from "react";
-import { FormSearch } from "./components/FormSearch";
+import FormSearch from "./components/FormSearch";
 import Posts from "./components/Posts";
 import PostForm from "./components/PostForm";
 import FetchedPosts from "./components/FetchedPosts";
