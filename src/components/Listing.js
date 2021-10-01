@@ -3,19 +3,23 @@ import React from "react";
 export const Listing = ({ res }) => {
   const { meanings, word, phonetics } = res;
 
+  //console.log(res);
+
   const meaningsList =
     meanings.length &&
     meanings.map((meaning, i) => {
       return (
-        <div key={i}>
-          <i>{meaning.partOfSpeech}</i> <br />
+        <div className="meanings mb-3" key={i}>
+          <span className="badge bg-secondary mb-3">
+            {meaning.partOfSpeech}
+          </span>{" "}
+          <br />
           {meaning.definitions.map((definition, i) => {
             return (
-              <div key={i}>
-                {/* <strong>DEFINITION {i + 1}</strong> <br /> */}
-                <strong>{definition.definition}</strong>{" "}
+              <p key={i}>
+                <strong>{definition.definition}</strong>:{" "}
                 <i>{definition.example}</i>
-              </div>
+              </p>
             );
           })}
         </div>
@@ -25,25 +29,28 @@ export const Listing = ({ res }) => {
   const phoneticsList =
     phonetics.length &&
     phonetics.map((phonetic, i) => {
+      const audioURL = phonetic.audio;
+      const audio = new Audio(audioURL);
+
       return (
-        <div key={i}>
-          <p>
-            <strong>phonetic</strong>: {phonetic.text}
-          </p>
-          {phonetic.audio && (
-            <audio controls>
-              <source src={phonetic.audio} type="audio/mpeg" />
-            </audio>
+        <div className="phonetics" key={i}>
+          {audioURL && (
+            <button onClick={() => audio.play()} className="btn btn-outline">
+              <i className="bi bi-volume-up-fill"></i>
+            </button>
           )}
+          {phonetic.text && `/${phonetic.text}/`}
         </div>
       );
     });
 
   return (
-    <div className="card">
-      <h2>{word}</h2>
-      {meaningsList}
-      {phoneticsList}
+    <div className="card mb-3">
+      <div className="card-body">
+        <h2 className="card-title">{word}</h2>
+        {phoneticsList}
+        {meaningsList}
+      </div>
     </div>
   );
 };

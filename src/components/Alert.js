@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export const Alert = ({text}) => (
-    <div style={{color: "red"}}>{text}</div>
+export const Alert = ({ text }) => (
+  <div className="alert alert-danger">{text}</div>
 );

@@ -7,6 +7,7 @@ import {
   SHOW_LOADER,
   FETCH_DICTIONARY,
   CLEAN_DICTIONARY,
+  SET_QUERY,
 } from "./types";
 
 export function createPost(post) {
@@ -74,5 +75,11 @@ export function fetchDictionary(query) {
 export function cleanDictionary() {
   return (dispatch) => {
     dispatch({ type: CLEAN_DICTIONARY });
+  };
+}
+
+export function setQuery(query) {
+  return (dispatch) => {
+    dispatch({ type: SET_QUERY, payload: query });
   };
 }
