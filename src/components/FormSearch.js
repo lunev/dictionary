@@ -1,23 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  showAlert,
-  fetchDictionary,
-  cleanDictionary,
-  setQuery,
-} from "../redux/actions";
-import { Alert } from "./Alert";
-import { Loader } from "./Loader";
-import { Listing } from "./Listing";
+import React, { useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { fetchDictionary, setQuery } from "../redux/actions";
 
 export default () => {
   const input = useRef(null);
-  const reset = useRef(null);
+  let history = useHistory();
 
   const dispatch = useDispatch();
-  const alert = useSelector((state) => state.app.alert);
-  const loading = useSelector((state) => state.app.loading);
-  const dictionary = useSelector((state) => state.dictionary.fetchedDictionary);
 
   useEffect(() => {
     input.current.focus();
@@ -26,17 +16,10 @@ export default () => {
   const onSubmit = (event) => {
     event.preventDefault();
     let query = input.current.value.trim();
-    if (!query) {
-      return dispatch(showAlert("The field is required"));
-    }
     dispatch(fetchDictionary(query));
     dispatch(setQuery(query));
+    history.push(`/dictionary/${query}`);
     input.current.value = "";
-  };
-
-  const onReset = (event) => {
-    input.current.value = "";
-    dispatch(cleanDictionary());
   };
 
   return (
@@ -50,6 +33,7 @@ export default () => {
             placeholder="Search English Dictionary"
             aria-label="English Dictionary"
             aria-describedby="button-search"
+            required
           />
           <button
             type="submit"
@@ -63,18 +47,6 @@ export default () => {
           </button> */}
         </div>
       </form>
-
-      {loading && <Loader />}
-
-      {alert && <Alert text={alert} />}
-
-      {dictionary && dictionary.message}
-
-      {dictionary &&
-        Array.isArray(dictionary) &&
-        dictionary.map((res, i) => {
-          return <Listing res={res} key={i} />;
-        })}
     </div>
   );
 };

@@ -6,7 +6,6 @@ import {
   SHOW_ALERT,
   SHOW_LOADER,
   FETCH_DICTIONARY,
-  CLEAN_DICTIONARY,
   SET_QUERY,
 } from "./types";
 
@@ -69,12 +68,6 @@ export function fetchDictionary(query) {
       dispatch(showAlert("Something went wrong"));
       dispatch(hideLoader());
     }
-  };
-}
-
-export function cleanDictionary() {
-  return (dispatch) => {
-    dispatch({ type: CLEAN_DICTIONARY });
   };
 }
 

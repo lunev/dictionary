@@ -3,8 +3,6 @@ import React from "react";
 export const Listing = ({ res }) => {
   const { meanings, word, phonetics } = res;
 
-  //console.log(res);
-
   const meaningsList =
     meanings.length &&
     meanings.map((meaning, i) => {

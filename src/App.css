@@ -1,8 +1,15 @@
-.form-search {
-    max-width: 600px;
-    margin: 0 auto;
+html,
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
-.color-secondary {
-    color: #6c757d;
+@media screen and (min-width: 1024px) {
+    .form-search {
+        min-width: 600px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 }
