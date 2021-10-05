@@ -24,6 +24,7 @@ export default () => {
           {dictionary && dictionary.message}
 
           {dictionary &&
+            Array.isArray(dictionary) &&
             dictionary.map((res, i) => {
               return <DictionaryItem dictionary={res} key={i} />;
             })}
