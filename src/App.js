@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
 import FormSearch from "./components/FormSearch";
+import Home from "./components/Home";
 import Dictionary from "./components/Dictionary";
-import DictionaryStatic from "./components/DictionaryStatic";
 
 import "./App.css";
 
@@ -30,7 +29,7 @@ export default function App() {
           <Home />
         </Route>
         <Route path="/dictionary/:slug">
-          <DictionaryStatic />
+          <Dictionary />
         </Route>
       </Switch>
     </Router>

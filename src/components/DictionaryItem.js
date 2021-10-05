@@ -1,7 +1,7 @@
 import React from "react";
 
-export const Listing = ({ res }) => {
-  const { meanings, word, phonetics } = res;
+export const DictionaryItem = ({ dictionary }) => {
+  const { meanings, word, phonetics } = dictionary;
 
   const meaningsList =
     meanings.length &&

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDictionary } from "../redux/actions";
-import { Listing } from "./Listing";
+import { DictionaryItem } from "./DictionaryItem";
 import { Loader } from "./Loader";
 
 export default () => {
@@ -20,11 +20,12 @@ export default () => {
       <div className="row">
         <div className="col">
           {loading && <Loader />}
+
           {dictionary && dictionary.message}
+
           {dictionary &&
-            Array.isArray(dictionary) &&
             dictionary.map((res, i) => {
-              return <Listing res={res} key={i} />;
+              return <DictionaryItem dictionary={res} key={i} />;
             })}
         </div>
       </div>
