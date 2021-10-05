@@ -14,7 +14,7 @@ export default function App() {
           <div className="col mb-4">
             <h1 className="text-center color-secondary mt-3 mb-4">
               <Link
-                to="/"
+                to="/dictionary/"
                 className="page-title text-decoration-none text-secondary"
               >
                 English Dictionary
@@ -25,7 +25,7 @@ export default function App() {
         </div>
       </div>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/dictionary/">
           <Home />
         </Route>
         <Route path="/dictionary/:slug">
