@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import { FormSearch } from "./components/FormSearch";
-import Home from "./components/Home";
+import { Home } from "./components/Home";
 import { Dictionary } from "./components/Dictionary";
 import "./App.css";
 

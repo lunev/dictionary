@@ -1,6 +1,6 @@
 import React from "react";
 
-export default () => {
+export const Home = () => {
   return (
     <div>
       <p className="text-center text-secondary fst-italic">
