@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { fetchDictionary, setQuery } from "../redux/actions";
+import { setQuery } from "../redux/actions";
 
-export default () => {
+export const FormSearch = () => {
   const input = useRef(null);
   let history = useHistory();
 
@@ -11,14 +11,13 @@ export default () => {
 
   useEffect(() => {
     input.current.focus();
-  });
+  }, []);
 
   const onSubmit = (event) => {
     event.preventDefault();
     let query = input.current.value.trim();
-    dispatch(fetchDictionary(query));
     dispatch(setQuery(query));
-    history.push(`/dictionary/${query}`);
+    history.push(`${query}`);
     input.current.value = "";
   };
 

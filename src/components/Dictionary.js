@@ -5,14 +5,14 @@ import { fetchDictionary } from "../redux/actions";
 import { DictionaryItem } from "./DictionaryItem";
 import { Loader } from "./Loader";
 
-export default () => {
-  let { slug } = useParams();
+export const Dictionary = () => {
+  const { hash } = useParams();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.app.loading);
   const dictionary = useSelector((state) => state.dictionary.fetchedDictionary);
 
   useEffect(() => {
-    dispatch(fetchDictionary(slug));
+    dispatch(fetchDictionary(hash));
   }, []);
 
   return (
