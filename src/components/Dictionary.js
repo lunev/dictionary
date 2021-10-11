@@ -13,7 +13,7 @@ export const Dictionary = () => {
 
   useEffect(() => {
     dispatch(fetchDictionary(hash));
-  }, []);
+  }, [hash]);
 
   return (
     <div className="container">

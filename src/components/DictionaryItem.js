@@ -4,7 +4,7 @@ export const DictionaryItem = ({ dictionary }) => {
   const { meanings, word, phonetics } = dictionary;
 
   const meaningsList =
-    meanings.length &&
+    meanings.length > 0 &&
     meanings.map((meaning, i) => {
       return (
         <div className="meanings mb-3" key={i}>
@@ -25,7 +25,7 @@ export const DictionaryItem = ({ dictionary }) => {
     });
 
   const phoneticsList =
-    phonetics.length &&
+    phonetics.length > 0 &&
     phonetics.map((phonetic, i) => {
       const audioURL = phonetic.audio;
       const audio = new Audio(audioURL);
