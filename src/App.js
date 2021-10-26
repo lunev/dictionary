@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { FormSearch } from "./components/FormSearch";
 import { Home } from "./components/Home";
 import { Dictionary } from "./components/Dictionary";

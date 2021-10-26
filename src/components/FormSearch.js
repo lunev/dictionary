@@ -16,9 +16,11 @@ export const FormSearch = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     let query = input.current.value.trim();
-    dispatch(fetchDictionary(query));
-    dispatch(setQuery(query));
-    history.push(`${query}`);
+    if (history.location.pathname.replace("/", "") !== query) {
+      dispatch(fetchDictionary(query));
+      dispatch(setQuery(query));
+      history.push(`${query}`);
+    }
     input.current.value = "";
   };
 
@@ -42,9 +44,6 @@ export const FormSearch = () => {
           >
             <i className="bi bi-search"></i>
           </button>
-          {/* <button type="reset" onClick={onReset} ref={reset}>
-            <i class="bi bi-x"></i>
-          </button> */}
         </div>
       </form>
     </div>

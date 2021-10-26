@@ -1,4 +1,4 @@
-import React, { useEffect,  } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDictionary } from "../redux/actions";
@@ -13,8 +13,7 @@ export const Dictionary = () => {
 
   useEffect(() => {
     dispatch(fetchDictionary(hash));
-    console.log(`hash: ${hash}`)
-  }, [dispatch,hash]);
+  }, [hash]);
 
   return (
     <div className="container">
