@@ -16,19 +16,17 @@ export const Dictionary = () => {
   }, [hash]);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          {loading && <Loader />}
+    <div className="row">
+      <div className="col">
+        {loading && <Loader />}
 
-          {dictionary && dictionary.message}
+        {dictionary && dictionary.message}
 
-          {dictionary &&
-            Array.isArray(dictionary) &&
-            dictionary.map((res, i) => {
-              return <DictionaryItem dictionary={res} key={i} />;
-            })}
-        </div>
+        {dictionary &&
+          Array.isArray(dictionary) &&
+          dictionary.map((res, i) => {
+            return <DictionaryItem dictionary={res} key={i} hash={hash} />;
+          })}
       </div>
     </div>
   );

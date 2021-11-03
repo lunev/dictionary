@@ -1,23 +1,40 @@
 import React from "react";
+import { Collapse } from "./Collapse";
 
-export const DictionaryItem = ({ dictionary }) => {
-  const { meanings, word, phonetics } = dictionary;
+export const DictionaryItem = (props) => {
+  const { meanings, word, phonetics } = props.dictionary;
+  const meaningsLength = meanings.length || 0;
 
   const meaningsList =
     meanings.length > 0 &&
     meanings.map((meaning, i) => {
       return (
         <div className="meanings mb-3" key={i}>
-          <span className="badge bg-secondary mb-3">
+          <span className="badge bg-danger mb-2 d-inline-block text-uppercase">
             {meaning.partOfSpeech}
-          </span>{" "}
-          <br />
-          {meaning.definitions.map((definition, i) => {
+          </span>
+          {meaning.definitions.map((definition, k) => {
+            const { antonyms, synonyms, example, definition: def } = definition;
+
             return (
-              <p key={i}>
-                <strong>{definition.definition}</strong>:{" "}
-                <i>{definition.example}</i>
-              </p>
+              <div className="mb-3" key={k}>
+                <p>
+                  <strong>
+                    <span className="text-danger">
+                      {i + 1}.{k + 1}
+                    </span>{" "}
+                    {def}
+                  </strong>
+                  : <br />
+                  <i>{example}</i>
+                </p>
+                {synonyms.length > 0 && (
+                  <Collapse list={synonyms} button="Synonyms" />
+                )}
+                {antonyms.length > 0 && (
+                  <Collapse list={antonyms} button="Antonyms" />
+                )}
+              </div>
             );
           })}
         </div>
@@ -45,7 +62,11 @@ export const DictionaryItem = ({ dictionary }) => {
   return (
     <div className="card mb-3">
       <div className="card-body">
-        <h2 className="card-title">{word}</h2>
+        <h2 className="card-title fs-1 text-danger">{word}</h2>
+        <p className="text-uppercase">
+          <strong className="text-decoration-underline">meanings</strong>{" "}
+          {meaningsLength}
+        </p>
         {phoneticsList}
         {meaningsList}
       </div>

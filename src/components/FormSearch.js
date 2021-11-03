@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchDictionary, setQuery } from "../redux/actions";
@@ -25,7 +25,7 @@ export const FormSearch = () => {
   };
 
   return (
-    <div>
+    <Fragment>
       <form className="form-search" onSubmit={onSubmit}>
         <div className="input-group mb-3">
           <input
@@ -39,13 +39,13 @@ export const FormSearch = () => {
           />
           <button
             type="submit"
-            className="btn btn-lg btn-secondary"
+            className="btn btn-lg btn-danger"
             id="button-search"
           >
             <i className="bi bi-search"></i>
           </button>
         </div>
       </form>
-    </div>
+    </Fragment>
   );
 };
