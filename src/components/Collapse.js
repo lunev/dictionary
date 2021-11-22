@@ -19,7 +19,7 @@ export const Collapse = (props) => {
           list.length > 0 &&
           list.map((syn, i) => {
             return (
-              <li className="col-3 col-xs-12 col-sm-4 mt-2" key={i}>
+              <li className="col-6 col-sm-6 col-md-4 mt-2" key={i}>
                 {syn}
               </li>
             );
