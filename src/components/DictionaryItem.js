@@ -28,10 +28,10 @@ export const DictionaryItem = (props) => {
                   : <br />
                   <i>{example}</i>
                 </p>
-                {synonyms.length > 0 && (
+                {synonyms && synonyms.length > 0 && (
                   <Collapse list={synonyms} button="Synonyms" />
                 )}
-                {antonyms.length > 0 && (
+                {antonyms && antonyms.length > 0 && (
                   <Collapse list={antonyms} button="Antonyms" />
                 )}
               </div>
