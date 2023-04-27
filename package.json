@@ -44,5 +44,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "[meetDeveloper](https://github.com/meetDeveloper) thank you for providing [free dictionary API](https://github.com/meetDeveloper/freeDictionaryAPI)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunev/dictionary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lunev/dictionary/issues"
   }
 }
